@@ -66,8 +66,8 @@ contract Medic {
         return patients[patient];
     }
     
-    function addPatient(address patient, uint8 age, string sex, string currentDiseases, string currentTreatments, string treatmentRestrictions) returns (bool) {
-        patients[patient]=patientDetail(age,sex,currentDiseases,currentTreatments,treatmentRestrictions);
+    function addPatient(uint8 age, string sex, string currentDiseases, string currentTreatments, string treatmentRestrictions) returns (bool) {
+        patients[msg.sender] = patientDetail(age,sex,currentDiseases,currentTreatments,treatmentRestrictions);
         return true;
     }
     
