@@ -3,14 +3,14 @@ fs = require('fs')
 solc = require('solc')
 
 web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-code = fs.readFileSync('./contracts/Doctor.sol').toString()
+code = fs.readFileSync('./contracts/Medic.sol').toString()
 compiledCode = solc.compile(code)
-abiDefinition = JSON.parse(compiledCode.contracts[':Doctor'].interface)
+// console.log(compiledCode.contracts)
+abiDefinition = JSON.parse(compiledCode.contracts[':Medic'].interface)
 VotingContract = web3.eth.contract(abiDefinition)
-byteCode = compiledCode.contracts[':Doctor'].bytecode
+byteCode = compiledCode.contracts[':Medic'].bytecode
 deployedContract = VotingContract.new([], { data: byteCode, from: web3.eth.accounts[0], gas: 4700000 })
-console.log('Contract Address: ' + deployedContract.address)
-contractInstance = VotingContract.at(deployedContract.address)
+
 
 var process = require('process')
 var stop = false;
