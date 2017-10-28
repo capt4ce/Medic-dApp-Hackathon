@@ -4,7 +4,7 @@ import time
 def vote_callback(r):
     print(r)
 
-def getPatientDetails(id):
+def getDoctorDetails(id):
     web3 = Web3(HTTPProvider("http://10.10.1.90:8545"))
 #web3 = Web3(TestRPCProvider(host='127.0.0.1', port=8545))
 #print(web3.eth.blockNumber)
