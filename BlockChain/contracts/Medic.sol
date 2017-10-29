@@ -3,6 +3,7 @@ pragma solidity ^0.4.11;
 
 contract Medic {
     event Treatment(address doctor, address patient, string treatments, string status, string disease);
+    event RenalTest(address patient, uint8 Creatinine, uint8 Sodium, uint8 Potassium, uint8 eGFR, uint8 Urea);
     
     struct doctorDetail {
         uint8 age;
@@ -18,14 +19,45 @@ contract Medic {
         string treatmentRestrictions;
     }
 
+    struct patientRenalProfile{
+        uint8 Creatinine;
+        uint8 Sodium;
+        uint8 Potassium;
+        uint8 eGFR;
+        uint8 Urea;
+    }
+
+    struct diseaseDetail{
+        string name;
+        string symptoms;
+    }
+
+    struct drugDetail{
+        string name;
+        int qty;
+        uint8 price;
+        bool present;
+    }
+
     mapping (address => doctorDetail) doctors;
     mapping (address => patientDetail) patients;
-    mapping (string => string) diseases;   //string of disease symptoms 
+    mapping(address => patientRenalProfile) patientRenalProfiles;
+
+    //drugs are refered with hash
+    mapping (string => diseaseDetail) diseases;   //string of disease symptoms 
+
+    //drugs are refered with hash
+    mapping(string => drugDetail) unboughtDrug;
+    mapping(string => drugDetail) boughtDrug;
 
     
     function Medic() {
         // doctorDetail storage d = doctorDetail(8,"m");
         
+    }
+
+    function test() returns (string) {
+        return "aaa";
     }
     
 
@@ -65,7 +97,7 @@ contract Medic {
     function getPatientDetail(address patient) returns (patientDetail) {
         return patients[patient];
     }
-    
+
     function addPatient(uint8 age, string sex, string currentDiseases, string currentTreatments, string treatmentRestrictions) returns (bool) {
         patients[msg.sender] = patientDetail(age,sex,currentDiseases,currentTreatments,treatmentRestrictions);
         return true;
@@ -91,8 +123,46 @@ contract Medic {
         patients[patient].treatmentRestrictions=treatmentRestrictions;
     }
 
-    function addDisease(string disease, string symptomList) {
-        diseases[disease]=symptomList;
+    // Patient's Renal profiles
+    function getPatientRenalProfile(address patient) returns (patientRenalProfile) {
+        return patientRenalProfiles[patient];
+    }
+    
+    function setPatientRenalProfile(address patient, uint8 Creatinine, uint8 Sodium, uint8 Potassium, uint8 eGFR, uint8 Urea) returns (bool) {
+        patientRenalProfiles[patient]= patientRenalProfile(Creatinine,Sodium,Potassium,eGFR,Urea);
+        RenalTest(patient,Creatinine,Sodium,Potassium,eGFR,Urea);
+        return true;
+    }
+    
+    
+
+
+    // ==========================================
+    // Disesase Methods
+    // ==========================================
+    function getDetail(string diseaseHash, string name, string symptomList) {
+        diseases[diseaseHash]=diseaseDetail(name,symptomList);
+    }
+    function addDisease(string diseaseHash, string name, string symptomList) {
+        diseases[diseaseHash]=diseaseDetail(name,symptomList);
+    }
+
+
+    // ==========================================
+    // Drugs methods
+    // ==========================================
+    function sellDrug(string drugHash,string name,  int qty, uint8 price) returns (bool){
+        unboughtDrug[drugHash]= drugDetail(name,qty,price,true);
+        return true;
+    }
+
+    function drugBuy(string drugHash) returns (bool){
+        if (unboughtDrug[drugHash].present) {
+            boughtDrug[drugHash]=unboughtDrug[drugHash];
+            delete unboughtDrug[drugHash];
+            return true;
+        }
+        return false;
     }
     
 }
