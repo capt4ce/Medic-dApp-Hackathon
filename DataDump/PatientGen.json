@@ -2,36 +2,41 @@
     {
         "age" : 20 ,
         "sex" : "m" ,
-        "currentDisease" : "Abnormal Liver Enzymes , Achalasia",
+        "currentDisease" : "Abnormal Liver Enzymes , Achalasia(1)",
         "currentTreatment" : "Ashley Treatment, Hyperbaric medicine",
-        "treatmentConstraints" : "Sugar"
+        "treatmentConstraints" : "Sugar" ,
+        "diseaseSeverity" : 1
     } ,
     {
         "age" : 21 ,
         "sex" : "f" ,
         "currentDisease" : "Hepatic Jaundice , Achalasia",
         "currentTreatment" : "Hormone therapy, Pastille",
-        "treatmentConstraints" : "Sugar"
+        "treatmentConstraints" : "Sugar",
+        "diseaseSeverity" : 2
     } ,
     {
         "age" : 22 ,
         "sex" : "m" ,
         "currentDisease" : "Heart Lead Extraction , Helicobacter Pylori",
         "currentTreatment" : "Hypnotherapy",
-        "treatmentConstraints" : "High Blood Pressure"
+        "treatmentConstraints" : "High Blood Pressure",
+        "diseaseSeverity" : 4
     } ,
     {
         "age" : 23 ,
         "sex" : "f" ,
         "currentDisease" : "Ehlers-Danlos Syndrome , Encephalopathy",
         "currentTreatment" : "Lipotomy, tamponade",
-        "treatmentConstraints" : "lactose intolerance"
+        "treatmentConstraints" : "lactose intolerance",
+        "diseaseSeverity" : 1
     } ,
     {
         "age" : 24 ,
         "sex" : "m" ,
         "currentDisease" : "Achondroplasia , Echocardiogram",
         "currentTreatment" : "Malotilate, Strimvelis",
-        "treatmentConstraints" : "Sugar, High Blood Pressure"
+        "treatmentConstraints" : "Sugar, High Blood Pressure",
+        "diseaseSeverity" : 3
     } 
 ]

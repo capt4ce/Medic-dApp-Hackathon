@@ -1,0 +1,33 @@
+[
+    {
+        "Creatine" : 154 ,
+        "Sodium" :   120,
+        "Potassium" :  100,
+        "eGFR" :  123, 
+        "Urea" : 156 
+    },{
+        "Creatine" : 150 ,
+        "Sodium" :   140,
+        "Potassium" :  130,
+        "eGFR" :  126, 
+        "Urea" : 56 
+    },{
+        "Creatine" : 164 ,
+        "Sodium" :   320,
+        "Potassium" :  234,
+        "eGFR" :  156, 
+        "Urea" : 152 
+    },{
+        "Creatine" : 125 ,
+        "Sodium" :   151,
+        "Potassium" :  134,
+        "eGFR" :  123, 
+        "Urea" : 156 
+    },{
+        "Creatine" : 254 ,
+        "Sodium" :   145,
+        "Potassium" :  200,
+        "eGFR" :  146, 
+        "Urea" : 167 
+    }
+]
