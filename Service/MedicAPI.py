@@ -1,11 +1,11 @@
 from flask import Flask,request
 from flask_restful import Resource, Api, reqparse
 import os
-import PatientDetails, DoctorDetails
+
 app = Flask(__name__)
 api = Api(app)
 @app.route('/')
-class MedicPatientDetails (Resource):
+class PatientsAttendDetails (Resource):
     def post(self):
         id = 9990
         parser = reqparse.RequestParser()
