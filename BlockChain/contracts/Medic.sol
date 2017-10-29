@@ -136,6 +136,8 @@ contract Medic {
         RenalTest(patient,Creatinine,Sodium,Potassium,eGFR,Urea);
         return true;
     }
+
+    
     
     
 
