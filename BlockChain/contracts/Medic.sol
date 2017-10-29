@@ -19,6 +19,7 @@ contract Medic {
         string currentDiseases;
         string currentTreatments;
         string treatmentRestrictions;
+        uint8 diseaseSeverity;
     }
 
     struct patientRenalProfile{
@@ -97,12 +98,12 @@ contract Medic {
     // ==========================================
     // Patient Methods
     // ==========================================
-    function getPatientDetail(address patient) returns (string,uint8,string,string,string,string) {
-        return (patients[patient].identityHash,patients[patient].age,patients[patient].sex,patients[patient].currentDiseases,patients[patient].currentTreatments,patients[patient].treatmentRestrictions);
+    function getPatientDetail(address patient) returns (string,uint8,string,string,string,string,uint8) {
+        return (patients[patient].identityHash,patients[patient].age,patients[patient].sex,patients[patient].currentDiseases,patients[patient].currentTreatments,patients[patient].treatmentRestrictions,patients[patient].diseaseSeverity);
     }
 
-    function addPatient(string identityHash,uint8 age, string sex, string currentDiseases, string currentTreatments, string treatmentRestrictions) returns (address) {
-        patients[msg.sender] = patientDetail(identityHash, age,sex,currentDiseases,currentTreatments,treatmentRestrictions);
+    function addPatient(string identityHash,uint8 age, string sex, string currentDiseases, string currentTreatments, string treatmentRestrictions, uint8 diseaseSeverity) returns (address) {
+        patients[msg.sender] = patientDetail(identityHash, age,sex,currentDiseases,currentTreatments,treatmentRestrictions,diseaseSeverity);
         return msg.sender;
     }
     
