@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./writePrescription.js"></script> 
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="col-sm-12">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+
+      <div class="col-sm-4">
+        <p><h1><b>Prescribe</b><h1></p>
+      </div>
+
+      <div class="col-sm-4">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+
+      <div class="col-sm-8">
+        <form class="form-horizontal">
+              <fieldset>
+                <legend>Prescription</legend>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="doctorPublicKey">Doctor Public Key</label>
+                      <input type="text" class="form-control" id="doctorPublicKey" placeholder="Doctor Public Key">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="patientPublicKey">Patient Public Key</label>
+                      <input type="text" class="form-control" id="patientPublicKey" placeholder="Patient Public Key">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="disease">Disease</label>
+                      <input type="text" class="form-control" id="disease" placeholder="Disease">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="treatment">Treatment</label>
+                      <input type="text" class="form-control" id="treatment" placeholder="Type of treatment prescribed">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="drugPrescribed">Drug Prescribes</label>
+                      <input type="text" class="form-control" id="drugPrescribed">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="treatmentStatus">treatmentStatus</label>
+                      <select id="treatmentStatus" class="form-control">
+                        <option selected>Status</option>
+                        <option>Initial</option>
+                        <option>Intermediary</option>
+                        <option>Success</option>
+                        <option>Failure</option>
+                      </select>
+                    </div>
+                  </div>
+                  <a href="#" class="btn btn-primary" id="prescribe" onclick="prescribe()">Prescribe</a>
+              </fieldset>
+            </form>
+
+      </div>
+
+      <div class="col-sm-2">
+      </div>  
+  
+	
+  </body>
+
+
+</html>

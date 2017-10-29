@@ -1,0 +1,37 @@
+[
+    {
+        "age" : 20 ,
+        "sex" : "m" ,
+        "currentDisease" : "Abnormal Liver Enzymes , Achalasia",
+        "currentTreatment" : "Ashley Treatment, Hyperbaric medicine",
+        "treatmentConstraints" : "Sugar"
+    } ,
+    {
+        "age" : 21 ,
+        "sex" : "f" ,
+        "currentDisease" : "Hepatic Jaundice , Achalasia",
+        "currentTreatment" : "Hormone therapy, Pastille",
+        "treatmentConstraints" : "Sugar"
+    } ,
+    {
+        "age" : 22 ,
+        "sex" : "m" ,
+        "currentDisease" : "Heart Lead Extraction , Helicobacter Pylori",
+        "currentTreatment" : "Hypnotherapy",
+        "treatmentConstraints" : "High Blood Pressure"
+    } ,
+    {
+        "age" : 23 ,
+        "sex" : "f" ,
+        "currentDisease" : "Ehlers-Danlos Syndrome , Encephalopathy",
+        "currentTreatment" : "Lipotomy, tamponade",
+        "treatmentConstraints" : "lactose intolerance"
+    } ,
+    {
+        "age" : 24 ,
+        "sex" : "m" ,
+        "currentDisease" : "Achondroplasia , Echocardiogram",
+        "currentTreatment" : "Malotilate, Strimvelis",
+        "treatmentConstraints" : "Sugar, High Blood Pressure"
+    } 
+]

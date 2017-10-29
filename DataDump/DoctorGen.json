@@ -1,0 +1,27 @@
+[
+    { 
+        "age" : 23 ,
+        "sex" : "m",
+        "specialities" : "Addiction psychiatrist, Anesthesiologist"
+    } ,
+    { 
+        "age" : 22 ,
+        "sex" : "m",
+        "specialities" : "Cardiac electrophysiologist, Cardiologist"
+    } , 
+    { 
+        "age" : 21 ,
+        "sex" : "f",
+        "specialities" : "Anesthesiologist"
+    } ,
+    { 
+        "age" : 24 ,
+        "sex" : "f",
+        "specialities" : "Allergist (immunologist), Gynecologist"
+    } ,
+    { 
+        "age" : 27 ,
+        "sex" : "m",
+        "specialities" : " Cardiovascular surgeon, Hepatologist"
+    }     
+]

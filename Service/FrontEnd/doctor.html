@@ -6,9 +6,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="./doctor.js"></script> 
+  <script src="./doctor.js"></script>
+  <script src="./writePrescription.js"></script> 
   <style>
   #details{
+  	display: none;
+  }
+  #prescrib{
   	display: none;
   }
   </style>
@@ -26,7 +30,7 @@
   		</div>
 
   		<div class="col-sm-4">
-  			<p><b>doctor Details</b></p>
+  			<p><h2><b>Doctor Details</b></h2></p>
   		</div>
 
   		<div class="col-sm-4">
@@ -68,10 +72,6 @@
   			<table class="table" id="details">
     			<tbody>
       				<tr>
-				        <td><b>Doctor Name</b></td>
-				        <td id="doctorName" placeholder="doctor Name">7</td>
-				    </tr>
-					<tr>
 				        <td><b>Age</b></td>
 				        <td id="age" placeholder="Age">1</td>
 				    </tr>
@@ -89,7 +89,74 @@
 
   		<div class="col-sm-4">
 		</div>
-	</div>	
+	</div>
+
+	<div class="row" id="prescrib">
+  		<div class="col-sm-4">
+  		</div>
+
+  		<div class="col-sm-4" >
+  			<p><a href="#prescriptionModal" class="btn btn-lg btn-primary" data-toggle="modal">Write Presciption</a></p>
+  		</div>
+
+  		<div class="col-sm-4">
+  		</div>
+	</div>
+
+
+	<div id="prescriptionModal" class="modal fade">  
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form class="form-horizontal">
+            <fieldset>
+            	<div class="modal-header">
+                	<h1>Prescription</h1>
+                </div>
+                <div class="modal-body">
+	                <div class="form-row">
+	                  <div class="form-group col-md-6">
+	                    <label for="doctorPublicKey">Doctor Public Key</label>
+	                    <input type="text" class="form-control" id="doctorPublicKey" placeholder="Doctor Public Key">
+	                  </div>
+	                  <div class="form-group col-md-6">
+	                    <label for="patientPublicKey">Patient Public Key</label>
+	                    <input type="text" class="form-control" id="patientPublicKey" placeholder="Patient Public Key">
+	                  </div>
+	                </div>
+	                <div class="form-row">
+	                  <div class="form-group col-md-12">
+	                    <label for="disease">Disease</label>
+	                    <input type="text" class="form-control" id="disease" placeholder="Disease">
+	                  </div>
+	                </div>
+	                <div class="form-row">
+	                  <div class="form-group col-md-12">
+	                    <label for="treatment">Treatment</label>
+	                    <input type="text" class="form-control" id="treatment" placeholder="Type of treatment prescribed">
+	                  </div>
+	                </div>
+	                <div class="form-row">
+	                  <div class="form-group col-md-6">
+	                    <label for="treatmentStatus">Treatment Status</label>
+	                    <select id="treatmentStatus" class="form-control">
+	                      <option selected>Status</option>
+	                      <option>successful</option>
+	                      <option>ongoing</option>
+	                      <option>forwarded</option>
+	                      <option>failure</option>
+	                    </select>
+	                  </div>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	                <a href="#" class="btn btn-primary" id="prescribe" onclick="prescribe()">Prescribe</a>
+	            </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>	
 
 
 

@@ -1,4 +1,4 @@
-function getPatientHistory(){
+	function getPatientHistory(){
 	patientPublicKey = $("#patientPublicKey").val();
 	//console.log("asdfsd"+patientPublicKey);
 	fetch("http://10.10.1.93:5000/patientHistory", {
@@ -9,7 +9,7 @@ function getPatientHistory(){
 	  },
 
 	  //make sure to serialize your JSON body
-	  body: JSON.stringify({id: patientPublicKey })
+	  body: JSON.stringify({id: patientPublicKey+'' })
 	})
 	.then( (response) => (response.json()))
 	.then(function(data){ 

@@ -2,15 +2,15 @@ pragma solidity ^0.4.11;
 
 
 contract Medic {
-    event Treatment(address doctor, address patient, string treatments, uint8 successRatePercentage, string disease);
+    event Treatment(address doctor, address patient, string treatments, string status, string disease);
     
-    struct doctorDetail{
+    struct doctorDetail {
         uint8 age;
         string sex;
         string specialities;
     }
 
-    struct patientDetail{
+    struct patientDetail {
         uint8 age;
         string sex;
         string currentDiseases;
@@ -20,6 +20,7 @@ contract Medic {
 
     mapping (address => doctorDetail) doctors;
     mapping (address => patientDetail) patients;
+    mapping (string => string) diseases;   //string of disease symptoms 
 
     
     function Medic() {
@@ -27,11 +28,15 @@ contract Medic {
         
     }
     
+
+    // ==========================================
+    // Doctor Methods
+    // ==========================================
     function getDoctorDetail(address doctor) returns (doctorDetail) {
         return doctors[doctor];
     }
     
-    function addDoctor(uint8 age, string sex, string specialities) returns (bool){
+    function addDoctor(uint8 age, string sex, string specialities) returns (bool) {
         doctors[msg.sender]=doctorDetail(age,sex,specialities);
         return true;
     }
@@ -44,21 +49,25 @@ contract Medic {
         doctors[msg.sender].sex=sex;
     }
     
-    function changeSpecialities(string specialities){
+    function changeSpecialities(string specialities) {
         doctors[msg.sender].specialities=specialities;
     }
     
     // can we filter element inside array in the event?
-    function issueTreatmentRecord(address patient, string treatments, uint8 successRatePercentage, string disease){
-        Treatment(msg.sender,patient,treatments,successRatePercentage,disease);
+    function issueTreatmentRecord(address patient, string treatments, string treatmentStatus, string disease) {
+        Treatment(msg.sender,patient,treatments, treatmentStatus,disease);
     }
-        
+
+
+    // ==========================================
+    // Patient Methods
+    // ==========================================    
     function getPatientDetail(address patient) returns (patientDetail) {
         return patients[patient];
     }
     
-    function addPatient(address patient, uint8 age, string sex, string currentDiseases, string currentTreatments, string treatmentRestrictions) returns (bool) {
-        patients[patient]=patientDetail(age,sex,currentDiseases,currentTreatments,treatmentRestrictions);
+    function addPatient(uint8 age, string sex, string currentDiseases, string currentTreatments, string treatmentRestrictions) returns (bool) {
+        patients[msg.sender] = patientDetail(age,sex,currentDiseases,currentTreatments,treatmentRestrictions);
         return true;
     }
     
@@ -80,6 +89,10 @@ contract Medic {
     
     function changePatientTreatmentRestrictions(address patient, string treatmentRestrictions) {
         patients[patient].treatmentRestrictions=treatmentRestrictions;
+    }
+
+    function addDisease(string disease, string symptomList) {
+        diseases[disease]=symptomList;
     }
     
 }
