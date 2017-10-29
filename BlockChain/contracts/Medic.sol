@@ -6,12 +6,14 @@ contract Medic {
     event RenalTest(address patient, uint8 Creatinine, uint8 Sodium, uint8 Potassium, uint8 eGFR, uint8 Urea);
     
     struct doctorDetail {
+        string identityHash;
         uint8 age;
         string sex;
         string specialities;
     }
 
     struct patientDetail {
+        string identityHash;
         uint8 age;
         string sex;
         string currentDiseases;
@@ -49,6 +51,7 @@ contract Medic {
     //drugs are refered with hash
     mapping(string => drugDetail) unboughtDrug;
     mapping(string => drugDetail) boughtDrug;
+    mapping(string => drugDetail) drugs;
 
     
     function Medic() {
@@ -64,13 +67,13 @@ contract Medic {
     // ==========================================
     // Doctor Methods
     // ==========================================
-    function getDoctorDetail(address doctor) returns (doctorDetail) {
-        return doctors[doctor];
+    function getDoctorDetail(address doctor) returns (string,uint8,string,string) {
+        return (doctors[doctor].identityHash,doctors[doctor].age,doctors[doctor].sex,doctors[doctor].specialities);
     }
-    
-    function addDoctor(uint8 age, string sex, string specialities) returns (bool) {
-        doctors[msg.sender]=doctorDetail(age,sex,specialities);
-        return true;
+
+    function addDoctor(string identityHash, uint8 age, string sex, string specialities) returns (address) {
+        doctors[msg.sender]=doctorDetail(identityHash,age,sex,specialities);
+        return msg.sender;
     }
     
     function changeAge(uint8 age) {
@@ -93,14 +96,14 @@ contract Medic {
 
     // ==========================================
     // Patient Methods
-    // ==========================================    
-    function getPatientDetail(address patient) returns (patientDetail) {
-        return patients[patient];
+    // ==========================================
+    function getPatientDetail(address patient) returns (string,uint8,string,string,string,string) {
+        return (patients[patient].identityHash,patients[patient].age,patients[patient].sex,patients[patient].currentDiseases,patients[patient].currentTreatments,patients[patient].treatmentRestrictions);
     }
 
-    function addPatient(uint8 age, string sex, string currentDiseases, string currentTreatments, string treatmentRestrictions) returns (bool) {
-        patients[msg.sender] = patientDetail(age,sex,currentDiseases,currentTreatments,treatmentRestrictions);
-        return true;
+    function addPatient(string identityHash,uint8 age, string sex, string currentDiseases, string currentTreatments, string treatmentRestrictions) returns (address) {
+        patients[msg.sender] = patientDetail(identityHash, age,sex,currentDiseases,currentTreatments,treatmentRestrictions);
+        return msg.sender;
     }
     
     function changePatientAge(address patient, uint8 age) {
@@ -124,8 +127,8 @@ contract Medic {
     }
 
     // Patient's Renal profiles
-    function getPatientRenalProfile(address patient) returns (patientRenalProfile) {
-        return patientRenalProfiles[patient];
+    function getPatientRenalProfile(address patient) returns (uint8,uint8,uint8,uint8,uint8) {
+        return (patientRenalProfiles[patient].Creatinine,patientRenalProfiles[patient].Sodium,patientRenalProfiles[patient].Potassium,patientRenalProfiles[patient].eGFR,patientRenalProfiles[patient].Urea);
     }
     
     function setPatientRenalProfile(address patient, uint8 Creatinine, uint8 Sodium, uint8 Potassium, uint8 eGFR, uint8 Urea) returns (bool) {
@@ -140,8 +143,8 @@ contract Medic {
     // ==========================================
     // Disesase Methods
     // ==========================================
-    function getDetail(string diseaseHash, string name, string symptomList) {
-        diseases[diseaseHash]=diseaseDetail(name,symptomList);
+    function getDiseaseDetail(string diseaseHash) returns (string,string){
+        return(diseases[diseaseHash].name,diseases[diseaseHash].symptoms);
     }
     function addDisease(string diseaseHash, string name, string symptomList) {
         diseases[diseaseHash]=diseaseDetail(name,symptomList);
@@ -151,8 +154,13 @@ contract Medic {
     // ==========================================
     // Drugs methods
     // ==========================================
+    function getDrugDetails(string drugHash) returns (string,int,uint8,bool){
+        return (drugs[drugHash].name,drugs[drugHash].qty,drugs[drugHash].price,drugs[drugHash].present);
+    }
+
     function sellDrug(string drugHash,string name,  int qty, uint8 price) returns (bool){
         unboughtDrug[drugHash]= drugDetail(name,qty,price,true);
+        drugs[drugHash]= drugDetail(name,qty,price,true);
         return true;
     }
 
