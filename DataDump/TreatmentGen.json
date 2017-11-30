@@ -1,0 +1,22 @@
+[
+    {
+        "treatment": "psychotherapy, medication, nutrition education,support groups",
+        "status": "successful",
+        "disease": "Bulimia Nervosa"
+    },
+    {
+        "treatment": "Targeted Therapy, Hormone Therapy, Chemotherapy",
+        "status": "ongoing",
+        "disease": "cancer"
+    },
+    {
+        "treatment": "zolpidem (Ambien), eszopiclone (Lunesta), zaleplon (Sonata), ramelteon (Rozerem)",
+        "status": "forwaded (referred to other hospital)",
+        "disease": "Insomnia"
+    },
+    {
+        "treatment": "bone marrow transplantation, radiation therapy, immunotherapy",
+        "status": "successful",
+        "disease": "Leukemia"
+    }
+]

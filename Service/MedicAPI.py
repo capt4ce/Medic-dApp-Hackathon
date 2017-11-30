@@ -37,8 +37,9 @@ class MedicPatientHistory (Resource):
         print(args['id'])
         if(args['id']):
                id = args['id']
+        print('API-'+id)
         data = Patient.getPatientHistory(id)
-        return  (data)
+        return (data)
 class MedicCreatePrescription (Resource):
     def post(self):
         patientPublicKey=0
